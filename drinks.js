@@ -1,6 +1,6 @@
 // Lista de productos. Se pueden agregar mas
 var nuevaBebida;
-class drinks { // 
+class Drinks { // 
     constructor(name,size,price,type,ID){
         this.name = name;
         this.size = size;
@@ -101,7 +101,7 @@ function admin(){
         }
         admin()
     } else if (opcion == 'agregar producto') {
-        nuevaBebida = new drinks(prompt('nombre'), prompt('tamano'), parseInt(prompt('precio')), prompt('tipo'), prompt('ID'))
+        nuevaBebida = new Drinks(prompt('nombre'), prompt('tamano'), parseInt(prompt('precio')), prompt('tipo'), prompt('ID'))
         nuevaBebida.agregarStock();
         admin()
 
