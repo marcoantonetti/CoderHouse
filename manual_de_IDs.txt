@@ -1,0 +1,22 @@
+Lista de productos y ID. Esto es solo para saber cual ID agregar, pues un admin deberia tener acceso a los IDs
+
+nombre                   ID
+Fernet Branca 500ml      011
+Fernet Branca 750ml      012 // por ahora solo este
+Fernet Branca 1L         013
+
+Fernet 1882 500ml        021
+Fernet 1882 750ml        022 // por ahora solo este
+Fernet 1882 1L           023
+
+Gin Beefeater 500ml      121
+Gin Beefeater 750ml      122 // por ahora solo este
+Gin Beefeater 1L         123
+
+Gin Bombai 500ml         131
+Gin Bombai 750ml         132 // por ahora solo este
+Gin Bombai 1L            133
+
+Smirnoff Vodka 500ml     201
+Smirnoff Vodka 750ml     202 // por ahora solo este
+Smirnoff Vodka 1L        203
