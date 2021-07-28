@@ -1,6 +1,5 @@
-// Lista de productos. Se pueden agregar mas
 var nuevaBebida;
-class Drinks { // 
+class Drinks { 
     constructor(name,size,price,type,ID){
         this.name = name;
         this.size = size;
@@ -9,30 +8,31 @@ class Drinks { //
         this.ID = ID;
         this.stock = 0;
     }       
-    
+    //metodo
     agregarStock(){
         var x;
         var y = true 
-        console.log('Largo del array pre entrada: ' + drinksArray.length + ' Ultima entrada: ' + drinksArray[(drinksArray.length)-1].name)
+       // console.log('Largo del array pre entrada: ' + drinksArray.length + ' Ultima entrada: ' + drinksArray[(drinksArray.length)-1].name)
         for (x of drinksArray){
             if (x.ID == this.ID){
-                console.log('Stock del producto pre entrada: '  +  x.name +' '+ x.stock )
                 x.stock += 1
+                let li = document.getElementById(`${x.name}`)
+                li.textContent = `${x.name} $${x.price} Stock = ${x.stock}`
                 y = false 
-                console.log('Stock del producto post entrada: ' +  x.name +' '+ x.stock )  }
+                 }
             }
             if (y){
                 nuevaBebida.stock +=1
                 drinksArray.push(nuevaBebida)
-                console.log('Largo del array post entrada: ' + drinksArray.length + ' Ultima entrada: ' + drinksArray[(drinksArray.length)-1].name) }
+                let li = document.createElement('li')
+                li.setAttribute('id',`${nuevaBebida.name}`) 
+                li.textContent = `${nuevaBebida.name} $${nuevaBebida.price}       Stock = ${nuevaBebida.stock}`
+                document.getElementById('lista').appendChild(li)}
     
      } 
      
 }     
-   
-
-
-// ID: Primer numero refiere al tipo de bebida, 2do a la bebida y 3ero al tamano
+// Objetos
 const FernetBranca = {
     name: 'fernet branca',
     size: '750',
@@ -56,7 +56,7 @@ const Fernet1882 = {
 }
 
 const GinBeefeater = {
-    name: 'gin beeafeter',
+    name: 'gin beefeater',
     size:   '750',
     price: 2150,
     type: 'gin',
@@ -91,46 +91,52 @@ const SmirnoffVodka = {
 
 const drinksArray = [GinBeefeater,GinBombai,Fernet1882,FernetBranca,SmirnoffVodka];
 
-function admin(){
-    const opcion = prompt('Opciones: agregar producto, ordenar o \'salir\' para salir ')
-    if (opcion == 'ordenar'){
-        let orden = ordenar(prompt('Como desea ordenar los productos ? Opciones: precio, tipo, nombre'))
-        var x;
-        for (x of orden){
-            console.log(x.name + ' $' + x.price + ' tipo: ' + x.type)
-        }
-        admin()
-    } else if (opcion == 'agregar producto') {
-        nuevaBebida = new Drinks(prompt('nombre'), prompt('tamano'), parseInt(prompt('precio')), prompt('tipo'), prompt('ID'))
-        nuevaBebida.agregarStock();
-        admin()
+// funciones
 
-    } else if (opcion == 'salir'){
-        console.log('Bebidas')
-        for (const x of drinksArray){
-            console.log(x.name + ' $' + x.price + ' tipo: ' + x.type + ' ID: ' + x.ID )
-        }
-    }
+// Elije opcion ordenar o agregar producto. Esta ultima agrega nuevas bebidas a los producos, en caso de ya existir, stock +1
+function admin(){
+    let opcion;
+    do{ opcion = prompt('Opciones: agregar producto, ordenar o \'salir\' para salir ')
+        if (opcion == 'ordenar'){
+            let arrayOrdenado = ordenar(prompt('Como desea ordenar los productos ? Opciones: precio, tipo, nombre'))
+            console.log('101'+drinksArray[drinksArray.length-1].name)
+            for (var x of arrayOrdenado){
+                let li = document.getElementById(`${x.name}`)
+                document.getElementById('lista').appendChild(li)
+                }console.log('105'+drinksArray[drinksArray.length-1].name)
+        } else if (opcion == 'agregar producto') {
+                    nuevaBebida = new Drinks(prompt('nombre'), prompt('tamano'), parseInt(prompt('precio')), prompt('tipo'), prompt('ID'))
+                    nuevaBebida.agregarStock();
+                    console.log('109'+drinksArray[drinksArray.length-1].name)}
+        }while(opcion!='salir'){}
+        
+    
 }
 
+// Agrega bebidas al carrito, y calcula el monto final a pagar
 function usuario(){
     let carrito = [] ;
     var precio = 0;
+    let i = 0;
 
     let item = prompt("Ingrese Item a comprar: Fernet Branca, Fernet 1882, Gin Beefeater, Gin Bombai, Smirnoff Vodka  o \'salir\' para salir");
     while(item != 'salir'){
-        item = item.toLowerCase()
-        carrito.push(drinksArray.filter(drink => drink.name == item)[0]);
+        carrito.push(drinksArray.filter(drink => drink.name == item.toLowerCase())[0]); // agrega objeto de DrinksArray al carrito
+        let li = document.createElement('li')
+        li.textContent = `${carrito[i].name} $ ${carrito[i].price}`
+        document.getElementById('carritoOL').appendChild(li)
+        i++
         item = prompt("Ingrese Item a comprar: Fernet Branca, Fernet 1882, Gin Beefeater, Gin Bombai, Smirnoff Vodka  o \'salir\' para salir");
      }
-    console.log('carrito')
     for(let i of carrito){
-        console.log(i.name + '  $' + i.price)
         precio += i.price
     }
-    console.log('Monto a pagar: $' + precio)
+    let p = document.createElement('p')
+    p.textContent = `Monto a pagar: $ ${precio}`
+    document.getElementById('carrito').appendChild(p)
 }    
 
+// ordena por tipo, nombre alfabetico o precio  
 function ordenar(a){
     switch(a) {
         case ('tipo'):
@@ -144,6 +150,10 @@ function ordenar(a){
         }
 
 function main(){
+    console.log('Bebidas')
+        for (const x of drinksArray){
+            console.log(x.name + ' $' + x.price + ' tipo: ' + x.type + ' ID: ' + x.ID )
+        }
     const cliente = prompt('Bienvenidos a drinks ! Sos usuario o admin ?')
         if (cliente == 'admin'){
             admin()
@@ -154,4 +164,4 @@ function main(){
 main()
         
 
-
+// event focus en bebida y number.pone max attr para canntidad 
