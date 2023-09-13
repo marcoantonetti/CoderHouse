@@ -11,15 +11,15 @@
 <h1 id="h1">Drinks Bebidas</h1>
 
 <body id="body">
-    <p class="class1" id='p'> Sos Administrador o Cliente? </p>
-    <p class="class1" id='padmin' style="display:none;">Bienvenido Administrador!</p>
-    <p class="class1" id="pcliente" style="display:none;">Bievenido Cliente!</p>
-    <button class='botonesAdmin' id='adminbtn'>Admin</button>
-    <button class='botonesClientes' id='clientebtn'>Cliente</button>
-    <p class="class1"> Bebidas </p>
+    <p class="class1" id='p'> Log as admin or client : </p>
+    <p class="class1" id='padmin' style="display:none;"> Welcome Admin! </p>
+    <p class="class1" id="pcliente" style="display:none;"> Welcome Client! </p>
+    <button class='botonesAdmin' id='adminbtn'> Admin </button>
+    <button class='botonesClientes' id='clientebtn'> Client </button>
+    <p class="class1"> Drinks </p>
     <div id="divLista" style="position:relative; left:80px; top:2px" ;>
         <ul id='lista'>
-            <li class='item' id='gin bombai'>gin bombai $1900 Stock = 5</li>
+            <li class='item' id='gin bombai'>Bombai Gin $1900 Stock = 5</li>
             <li class='item' id='fernet branca'>Fernet Branca $750 Stock = 5</li>
             <li class='item' id='fernet 1882'>Fernet 1882 $450 Stock = 5</li>
             <li class='item' id='gin beefeater'>Gin Beefeater $2150 Stock = 5</li>
@@ -29,9 +29,9 @@
     </div>
 
     <div id='divAdmin' style=" display: none; ">
-        <p>Admin: Ordenar o Agregar Productos</p>
+        <p> Admin: Order by attribute or add another product </p>
         <form action=" " id="formAgregar ">
-            <button class='botonesAdmin' id='agregarProductobtn'>Agregar Producto</button>
+            <button class='botonesAdmin' id='agregarProductobtn'> Add Product </button>
             <input type='text' placeholder="nombre " id='agregarNombre'>
             <input type='text' placeholder="tamano " id='agregarTamano'>
             <input type='number' placeholder="precio " id='agregarPrecio'>
@@ -40,7 +40,7 @@
             <!--como hago para que quede en la misma linea con los otros?-->
         </form>
         <form action=" " id="formOrdenar ">
-            <button class='botonesAdmin' id='ordenarbtn'>Ordenar</button>
+            <button class='botonesAdmin' id='ordenarbtn'> Order </button>
             <input type='text' placeholder="Por precio, tipo o nombre " id='textoOrdenar'>
         </form>
 
@@ -51,10 +51,10 @@
         <form id='formCliente' action=" ">
             <input type='text' placeholder="Bebida" id='bebida'>
             <input type='number' placeholder='Cantidad' max="max del stock " id="cantidad">
-            <button class='botonesClientes' id='btncarrito'>Agregar al carrito</button>
+            <button class='botonesClientes' id='btncarrito'> Add to cart </button>
         </form>
         <p> </p>
-        <button id="checkout">CHECKOUT</button>
+        <button id="checkout"> CHECKOUT </button>
 
 
         <ol id='carritoOL'>
@@ -63,7 +63,7 @@
         <p id='total'></p>
     </div>
     <div id="back">
-        <button id="btnBack">Back</button>
+        <button id="btnBack"> Back </button>
     </div>
 
 
